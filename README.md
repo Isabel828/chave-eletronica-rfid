@@ -1,31 +1,29 @@
-# Chave Eletrônica RFID
+# Chave eletrônica com RFID — EmbarcaTech
 
-Projeto de sistemas embarcados em C para controle de acesso por RFID, utilizando Raspberry Pi Pico, leitor MFRC522 e display OLED SSD1306.
+Projeto acadêmico em C para Raspberry Pi Pico, com leitura de cartões RFID MFRC522, display OLED SSD1306, LEDs de status, buzzers e servo motor para simulação de controle de acesso.
+
+## Funcionalidades
+- Leitura do UID de cartões RFID e comparação com usuários cadastrados.
+- Feedback de acesso autorizado ou negado via OLED, LEDs e sinal sonoro.
+- Acionamento de servo para simular abertura da trava.
+- Cadastro de até dez usuários via botão físico (armazenamento em memória, sem persistência).
 
 ## Tecnologias
+C, Raspberry Pi Pico SDK, CMake, SPI, I2C, PWM, MFRC522 e SSD1306.
 
-- C e Raspberry Pi Pico SDK
-- Leitor RFID MFRC522
-- Display OLED SSD1306
-- CMake
+## Organização
+- `src/main/`: lógica da aplicação.
+- `src/rfid/`: leitura RFID.
+- `src/display/`: mensagens no OLED.
+- `src/lib/`: driver MFRC522.
+- `inc/`: suporte ao SSD1306.
+- `CMakeLists.txt`: configuração de compilação.
 
-## Estrutura do código-fonte
+## Compilação
+Requer Pico SDK, compilador ARM e CMake configurados. A compilação e o funcionamento no hardware não foram verificados nesta revisão.
 
-- `src/main/` — lógica principal da chave eletrônica
-- `src/rfid/` — integração com o leitor RFID
-- `src/display/` — apresentação no OLED
-- `src/lib/` — biblioteca do MFRC522
-- `inc/` — drivers e cabeçalhos OLED
-- `CMakeLists.txt` — configuração de compilação
+## Observações de segurança
+Os UIDs de cartões não são autenticação forte, pois podem ser clonados. O projeto é educacional e não deve ser usado como fechadura de segurança real sem medidas adicionais. O UID previamente definido no código foi substituído por um valor ilustrativo para evitar divulgar identificadores de acesso.
 
-## Execução
-
-É necessário configurar o Raspberry Pi Pico SDK e as ferramentas de compilação para a placa. O projeto depende do hardware conectado e não foi validado fisicamente nesta revisão.
-
-## Publicação
-
-**A documentação foi publicada, mas os arquivos de código-fonte ainda estão sendo adicionados ao repositório.** A pasta `build/` e os arquivos temporários não devem ser versionados.
-
-## Segurança
-
-Use apenas cartões de teste autorizados e não publique identificadores reais de credenciais de acesso. A solução é um protótipo acadêmico, não um sistema de segurança certificado.
+## Créditos
+Projeto acadêmico de sistemas embarcados. Preserve os créditos dos colaboradores e das bibliotecas utilizadas.
